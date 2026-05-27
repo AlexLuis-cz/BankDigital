@@ -32,7 +32,7 @@ public class Conta {
         return this.saldo;
     }
 
-    public String getNome(){
+    public String getNome() {
         return this.nome;
     }
 }

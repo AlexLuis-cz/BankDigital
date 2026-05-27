@@ -3,15 +3,21 @@ package engine;
 import model.Conta;
 import model.ContaCorrente;
 import service.AuthService;
+import service.DepositService;
+import service.ExtratoService;
+import service.SaqueService;
 import util.InputUtil;
 
 public class BankEngine {
     AuthService authService = new AuthService();
+    SaqueService saqueService = new SaqueService();
+    DepositService depositService = new DepositService();
 
     public void menu() {
-        System.out.println("""
+        System.out.print("""
                 1:Entrar
-                2:Criar""");
+                2:Criar
+                """);
         byte esc = InputUtil.readByte();
         if (esc == 2) {
             authService.criarConta();
@@ -20,14 +26,22 @@ public class BankEngine {
 
     public void menuBanco(Conta conta) {
         ContaCorrente contaCorrente = new ContaCorrente(conta);
-        System.out.println("""
+        System.out.print("""
+                -------
                 1:Depositar
                 2:Sacar
-                """);
-        byte menu = InputUtil.readByte();
+                3:Extrato
+                -------""");
+        System.out.println();
 
-        if(menu == 2){
-            authService.saque(contaCorrente);
+        byte menu = InputUtil.readByte();
+        if (menu == 1) {
+            depositService.Depositar(contaCorrente);
+        } else if (menu == 2) {
+            saqueService.saque(contaCorrente);
+        } else if (menu == 3) {
+            ExtratoService.depositos(contaCorrente);
+            menuBanco(conta);
         }
     }
 }

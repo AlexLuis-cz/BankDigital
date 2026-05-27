@@ -2,18 +2,16 @@ package model;
 
 public class Banco {
     private final String nome;
-    private final int agencia;
-    private Conta[] contas = new Conta[10];
-    private int posicao = 0;
+    private static final Conta[] contas = new Conta[10];
+    private static int posicao = 0;
 
 
-    public Banco(String nome, int agencia) {
+    public Banco(String nome) {
         this.nome = nome;
-        this.agencia = agencia;
     }
 
-    public void setContas(Conta conta) {
-        this.contas[posicao] = conta;
+    public static void setContas(Conta conta) {
+        Banco.contas[posicao] = conta;
         posicao++;
     }
 

@@ -11,7 +11,7 @@ public class InputUtil {
         return sc.nextLine();
     }
 
-    public static String readSenha(String mensagem){
+    public static String readSenha(String mensagem) {
         System.out.print(mensagem);
         return sc.nextLine();
     }
@@ -20,7 +20,12 @@ public class InputUtil {
         return sc.nextByte();
     }
 
-    public static double readValorSaque(String mensagem){
+    public static double readValorSaque(String mensagem) {
+        System.out.print(mensagem);
+        return sc.nextDouble();
+    }
+
+    public static double readValorDeposito(String mensagem) {
         System.out.print(mensagem);
         return sc.nextDouble();
     }

@@ -4,7 +4,6 @@ public class Conta {
     protected String nome;
     protected String senha;
     protected double saldo;
-    protected Banco banco;
 
 
     public Conta(String nome, String senha) {

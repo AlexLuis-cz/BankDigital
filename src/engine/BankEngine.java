@@ -9,18 +9,20 @@ import service.SaqueService;
 import util.InputUtil;
 
 public class BankEngine {
-    AuthService authService = new AuthService();
     SaqueService saqueService = new SaqueService();
     DepositService depositService = new DepositService();
 
-    public void menu() {
+    public static void menu() {
         System.out.print("""
                 1:Entrar
                 2:Criar
                 """);
         byte esc = InputUtil.readByte();
-        if (esc == 2) {
-            authService.criarConta();
+        if(esc == 1){
+            AuthService.Entrar();
+        }
+        else if (esc == 2) {
+            AuthService.criarConta();
         }
     }
 
@@ -31,6 +33,7 @@ public class BankEngine {
                 1:Depositar
                 2:Sacar
                 3:Extrato
+                4:Sair
                 -------""");
         System.out.println();
 
@@ -42,6 +45,8 @@ public class BankEngine {
         } else if (menu == 3) {
             ExtratoService.depositos(contaCorrente);
             menuBanco(conta);
+        }else if(menu == 4){
+            menu();
         }
     }
 }

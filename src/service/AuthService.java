@@ -8,7 +8,7 @@ import util.InputUtil;
 
 public class AuthService {
 
-    public void criarConta() {
+    public static void criarConta() {
         BankEngine engine = new BankEngine();
         String nome = InputUtil.readNome("Nome:");
         String senha = InputUtil.readSenha("Senha:");
@@ -16,5 +16,12 @@ public class AuthService {
 
         Banco.setContas(conta);
         engine.menuBanco(conta);
+    }
+
+    public static void Entrar() {
+        Banco banco = new Banco();
+        String usuario = InputUtil.readNome("Usuario:");
+        String senha = InputUtil.readSenha("Senha:");
+        banco.loginRequest(usuario, senha);
     }
 }

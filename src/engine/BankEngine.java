@@ -14,14 +14,15 @@ public class BankEngine {
 
     public static void menu() {
         System.out.print("""
+                --------
                 1:Entrar
                 2:Criar
+                --------
                 """);
         byte esc = InputUtil.readByte();
-        if(esc == 1){
+        if (esc == 1) {
             AuthService.Entrar();
-        }
-        else if (esc == 2) {
+        } else if (esc == 2) {
             AuthService.criarConta();
         }
     }
@@ -33,20 +34,30 @@ public class BankEngine {
                 1:Depositar
                 2:Sacar
                 3:Extrato
-                4:Sair
-                -------""");
-        System.out.println();
+                4:Saldo
+                5:Sair
+                -------\n""");
+
 
         byte menu = InputUtil.readByte();
-        if (menu == 1) {
-            depositService.Depositar(contaCorrente);
-        } else if (menu == 2) {
-            saqueService.saque(contaCorrente);
-        } else if (menu == 3) {
-            ExtratoService.depositos(contaCorrente);
-            menuBanco(conta);
-        }else if(menu == 4){
-            menu();
+
+        switch (menu) {
+            case 1:
+                depositService.Depositar(contaCorrente);
+                break;
+            case 2:
+                saqueService.saque(contaCorrente);
+                break;
+            case 3:
+                ExtratoService.depositos(contaCorrente);
+                menuBanco(conta);
+                break;
+            case 4:
+                System.out.println("Saldo:" + conta.getSaldo());
+                break;
+            case 5:
+                menu();
+                break;
         }
     }
 }

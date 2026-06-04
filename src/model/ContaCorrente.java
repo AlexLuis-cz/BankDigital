@@ -5,7 +5,6 @@ public class ContaCorrente extends Conta {
     private final Conta conta;
 
     public ContaCorrente(Conta conta) {
-        super();
         this.conta = conta;
     }
 

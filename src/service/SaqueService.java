@@ -7,7 +7,6 @@ import util.InputUtil;
 public class SaqueService {
     public void saque(ContaCorrente conta) {
         BankEngine engine = new BankEngine();
-        ExtratoService extratoService = new ExtratoService();
         double valor = InputUtil.readValorSaque("Valor que deseja sacar:");
 
         if (valor > conta.getSaldo()) {//Validation to check if the check or withdrawal has funds.

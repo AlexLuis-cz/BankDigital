@@ -41,12 +41,4 @@ public class Banco {
         Banco.contas[posicao] = conta;
         posicao++;
     }
-
-    public void mostrarContas() {
-        System.out.println("--------------Contas Criadas:%s--------------\n");
-        for (Conta conta : contas) {
-            if (conta == null) return;
-            System.out.println("Nome:" + conta.nome);
-        }
-    }
 }

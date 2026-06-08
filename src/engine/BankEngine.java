@@ -54,6 +54,7 @@ public class BankEngine {
                 break;
             case 4:
                 System.out.println("Saldo:" + conta.getSaldo());
+                menuBanco(conta);
                 break;
             case 5:
                 menu();

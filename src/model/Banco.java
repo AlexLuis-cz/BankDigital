@@ -20,15 +20,13 @@ public class Banco {
         usuario = usuario.substring(0, 1).toUpperCase() + usuario.substring(1).toLowerCase();
 
         for (Conta value : contas) {
-            if (usuario.equals(value.nome)) {
-                if (senha.equals(value.senha)) {
-                    Conta conta = new Conta(usuario, senha);
-                    System.out.println("login feito com sucesso");
-                    bankEngine.menuBanco(conta);
-                } else {
-                    System.out.println("Usuario ou senha incorretos");
-                    BankEngine.menu();
-                }
+            if(value ==null)return;
+            if (usuario.equals(value.nome) && senha.equals(value.senha)) {
+                Conta conta = new Conta(usuario, senha);
+                ContaCorrente contaCorrente = new ContaCorrente(conta);
+
+                System.out.println("login feito com sucesso");
+                bankEngine.menuBanco(conta,contaCorrente);
             } else {
                 System.out.println("Usuario ou senha incorretos");
                 BankEngine.menu();

@@ -4,7 +4,6 @@ import model.Conta;
 import model.ContaCorrente;
 import service.AuthService;
 import service.DepositService;
-import service.ExtratoService;
 import service.SaqueService;
 import util.InputUtil;
 
@@ -27,8 +26,7 @@ public class BankEngine {
         }
     }
 
-    public void menuBanco(Conta conta) {
-        ContaCorrente contaCorrente = new ContaCorrente(conta);
+    public void menuBanco(Conta conta, ContaCorrente contaCorrente) {
         System.out.print("""
                 -------
                 1:Depositar
@@ -43,18 +41,18 @@ public class BankEngine {
 
         switch (menu) {
             case 1:
-                depositService.Depositar(contaCorrente);
+                depositService.Depositar(conta,contaCorrente);
                 break;
             case 2:
-                saqueService.saque(contaCorrente);
+                saqueService.saque(conta,contaCorrente);
                 break;
             case 3:
-                ExtratoService.depositos(contaCorrente);
-                menuBanco(conta);
+                conta.getExtrato();
+                menuBanco(conta,contaCorrente);
                 break;
             case 4:
-                System.out.println("Saldo:" + conta.getSaldo());
-                menuBanco(conta);
+                System.out.println(conta);
+                menuBanco(conta,contaCorrente);
                 break;
             case 5:
                 menu();

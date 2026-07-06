@@ -3,7 +3,7 @@ package model;
 import engine.BankEngine;
 
 public class Banco {
-    private static final Conta[] contas = new Conta[10];
+    private static final Conta[] contas = new Conta[100];
     private static int posicao = 0;
 
 
@@ -19,14 +19,17 @@ public class Banco {
         BankEngine bankEngine = new BankEngine();
         usuario = usuario.substring(0, 1).toUpperCase() + usuario.substring(1).toLowerCase();
 
-        for (Conta value : contas) {
-            if(value ==null)return;
+        for (Conta value : Banco.contas) {
+            if (value == null) {
+                System.out.println("Usuario ou senha incorretos");
+                BankEngine.menu();
+            }
+
             if (usuario.equals(value.nome) && senha.equals(value.senha)) {
-                Conta conta = new Conta(usuario, senha);
-                ContaCorrente contaCorrente = new ContaCorrente(conta);
+                ContaCorrente contaCorrente = new ContaCorrente(value);
 
                 System.out.println("login feito com sucesso");
-                bankEngine.menuBanco(conta,contaCorrente);
+                bankEngine.menuBanco(value, contaCorrente);
             } else {
                 System.out.println("Usuario ou senha incorretos");
                 BankEngine.menu();

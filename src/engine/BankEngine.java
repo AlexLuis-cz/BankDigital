@@ -26,7 +26,7 @@ public class BankEngine {
         }
     }
 
-    public void menuBanco(Conta conta, ContaCorrente contaCorrente) {
+    public  void menuBanco(Conta conta, ContaCorrente contaCorrente) {
         System.out.print("""
                 -------
                 1:Depositar
@@ -41,18 +41,18 @@ public class BankEngine {
 
         switch (menu) {
             case 1:
-                depositService.Depositar(conta,contaCorrente);
+                depositService.Depositar(conta, contaCorrente);
                 break;
             case 2:
-                saqueService.saque(conta,contaCorrente);
+                saqueService.saque(conta, contaCorrente);
                 break;
             case 3:
                 conta.getExtrato();
-                menuBanco(conta,contaCorrente);
+                menuBanco(conta, contaCorrente);
                 break;
             case 4:
                 System.out.println(conta);
-                menuBanco(conta,contaCorrente);
+                menuBanco(conta, contaCorrente);
                 break;
             case 5:
                 menu();

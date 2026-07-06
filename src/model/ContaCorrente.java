@@ -2,10 +2,9 @@ package model;
 
 public class ContaCorrente extends Conta {
     private double cheque;
-    private final Conta conta;
 
     public ContaCorrente(Conta conta) {
-        this.conta = conta;
+        super();
     }
 
     //depositos

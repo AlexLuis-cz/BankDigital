@@ -26,6 +26,10 @@ public class Conta {
 
 
     public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setDeposito(double saldo){
         this.saldo += saldo;
     }
 

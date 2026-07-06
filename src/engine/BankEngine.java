@@ -33,7 +33,8 @@ public class BankEngine {
                 2:Sacar
                 3:Extrato
                 4:Saldo
-                5:Sair
+                5:Saldo cheque
+                6:Sair
                 -------\n""");
 
 
@@ -55,6 +56,10 @@ public class BankEngine {
                 menuBanco(conta, contaCorrente);
                 break;
             case 5:
+                System.out.println("Saldo de cheque:"+contaCorrente.getCheque());
+                menuBanco(conta, contaCorrente);
+                break;
+            case 6:
                 menu();
                 break;
         }

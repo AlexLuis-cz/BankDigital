@@ -14,6 +14,7 @@ public class AuthService {
         String senha = InputUtil.readSenha("Senha:");
         Conta conta = new Conta(nome, senha);
         ContaCorrente contaCorrente = new ContaCorrente(conta);
+        contaCorrente.setCheque(200);
 
         Banco.setContas(conta);
         engine.menuBanco(conta,contaCorrente);

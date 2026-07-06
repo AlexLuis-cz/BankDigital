@@ -11,7 +11,7 @@ public class DepositService {
 
         double deposito = InputUtil.readValorDeposito("Valor de Deposito:");
         System.out.printf("Valor depositado:%.2f\n", deposito);
-        conta.setSaldo(deposito);
+        conta.setDeposito(deposito);
         conta.setExtrato(deposito);
 
         bankEngine.menuBanco(conta,contaCorrente);

@@ -3,8 +3,8 @@ package model;
 import engine.BankEngine;
 
 public class Banco {
-    private static final Conta[] contas = new Conta[100];
-    private static int posicao = 0;
+    private static final Conta[] CONTAS = new Conta[100];
+    private static int POSICAO = 0;
 
 
     public Banco() {
@@ -12,14 +12,14 @@ public class Banco {
     }
 
     public Conta[] getContas() {
-        return contas;
+        return CONTAS;
     }
 
     public void loginRequest(String usuario, String senha) {
         BankEngine bankEngine = new BankEngine();
         usuario = usuario.substring(0, 1).toUpperCase() + usuario.substring(1).toLowerCase();
 
-        for (Conta value : Banco.contas) {
+        for (Conta value : Banco.CONTAS) {
             if (value == null) {
                 System.out.println("Usuario ou senha incorretos");
                 BankEngine.menu();
@@ -39,7 +39,7 @@ public class Banco {
 
 
     public static void setContas(Conta conta) {
-        Banco.contas[posicao] = conta;
-        posicao++;
+        Banco.CONTAS[POSICAO] = conta;
+        POSICAO++;
     }
 }

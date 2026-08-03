@@ -1,7 +1,5 @@
 package model;
 
-import engine.BankEngine;
-
 public class Conta {
     protected String nome;
     protected String senha;

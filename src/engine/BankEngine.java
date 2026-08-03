@@ -19,22 +19,25 @@ public class BankEngine {
                 --------
                 """);
         byte esc = InputUtil.readByte();
-        if (esc == 1) {
-            AuthService.Entrar();
-        } else if (esc == 2) {
-            AuthService.criarConta();
+        switch(esc){
+            case 1:
+                AuthService.Entrar();
+                break;
+            case 2:
+                AuthService.criarConta();
+                break;
+            default:
+                menu();
+                break;
         }
     }
 
-    public  void menuBanco(Conta conta, ContaCorrente contaCorrente) {
+    public void menuBanco(Conta conta, ContaCorrente contaCorrente) {
         System.out.print("""
-                -------
-                1:Depositar
-                2:Sacar
-                3:Extrato
-                4:Saldo
-                5:Saldo cheque
-                6:Sair
+                -------    
+                1:Depositar | 4:Saldo
+                2:Sacar     | 5:Saldo cheque
+                3:Extrato   | 6:logout
                 -------\n""");
 
 
@@ -42,24 +45,30 @@ public class BankEngine {
 
         switch (menu) {
             case 1:
+                //depositar
                 depositService.Depositar(conta, contaCorrente);
                 break;
             case 2:
+                //sacar
                 saqueService.saque(conta, contaCorrente);
                 break;
             case 3:
+                //extrato
                 conta.getExtrato();
                 menuBanco(conta, contaCorrente);
                 break;
             case 4:
+                //saldo
                 System.out.println(conta);
                 menuBanco(conta, contaCorrente);
                 break;
             case 5:
-                System.out.println("Saldo de cheque:"+contaCorrente.getCheque());
+                //saldo cheque
+                System.out.println("Saldo de cheque:" + contaCorrente.getCheque());
                 menuBanco(conta, contaCorrente);
                 break;
             case 6:
+                //logout
                 menu();
                 break;
         }

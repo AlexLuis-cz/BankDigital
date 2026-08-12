@@ -25,6 +25,7 @@ public class Banco {
                 BankEngine.menu();
             }
 
+            assert value != null;
             if (usuario.equals(value.nome) && senha.equals(value.senha)) {
                 ContaCorrente contaCorrente = new ContaCorrente(value);
 

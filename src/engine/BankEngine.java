@@ -19,7 +19,7 @@ public class BankEngine {
                 --------
                 """);
         byte esc = InputUtil.readByte();
-        switch(esc){
+        switch (esc) {
             case 1:
                 AuthService.Entrar();
                 break;
@@ -45,25 +45,25 @@ public class BankEngine {
 
         switch (menu) {
             case 1:
-                //depositar
+                //Deposito
                 depositService.Depositar(conta, contaCorrente);
                 break;
             case 2:
-                //sacar
+                //Saque
                 saqueService.saque(conta, contaCorrente);
                 break;
             case 3:
-                //extrato
+                //Extrato
                 conta.getExtrato();
                 menuBanco(conta, contaCorrente);
                 break;
             case 4:
-                //saldo
+                //Saldo
                 System.out.println(conta);
                 menuBanco(conta, contaCorrente);
                 break;
             case 5:
-                //saldo cheque
+                //Saldo em cheque
                 System.out.println("Saldo de cheque:" + contaCorrente.getCheque());
                 menuBanco(conta, contaCorrente);
                 break;

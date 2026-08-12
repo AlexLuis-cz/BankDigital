@@ -1,5 +1,7 @@
 package util;
 
+import model.AccountType;
+
 import java.util.Scanner;
 
 public class InputUtil {
@@ -28,5 +30,23 @@ public class InputUtil {
     public static double readValorDeposito(String mensagem) {
         System.out.print(mensagem);
         return sc.nextDouble();
+    }
+
+    public static AccountType readTypeAccount(String mensagem) {
+        System.out.println(mensagem);
+        byte value = InputUtil.readByte();
+
+        switch (value) {
+            case 1:
+                return AccountType.LEGAl_PERSON;
+            case 2:
+                return AccountType.INDIVIDUAL_ACCOUNT;
+            default:
+                readTypeAccount("Opção invalida tente novamente\n" +
+                        "1:pessoa física\n" +
+                        "2:pessoa jurídica\n");
+                break;
+        }
+        return null;
     }
 }

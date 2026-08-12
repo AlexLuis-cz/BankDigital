@@ -4,9 +4,16 @@ public class Conta {
     protected String nome;
     protected String senha;
     protected double saldo;
+    protected AccountType accountType;
     protected double[] extrato = new double[100];
+
     private byte prox = 0;
 
+    public Conta(String nome, String senha, AccountType accountType) {
+        this.nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
+        this.senha = senha;
+        this.accountType = accountType;
+    }
 
     public Conta(String nome, String senha) {
         this.nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
@@ -27,7 +34,7 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public void setDeposito(double saldo){
+    public void setDeposito(double saldo) {
         this.saldo += saldo;
     }
 

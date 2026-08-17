@@ -73,6 +73,10 @@ public class Conta {
 
     @Override
     public String toString() {
-        return "Saldo:" + this.saldo;
+        return "Dados\n" +
+                "nome:" + nome + '\n' +
+                "senha:" + senha + '\n' +
+                "accountType:" + accountType.getTipoDaConta() + "\n"
+                ;
     }
 }

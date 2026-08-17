@@ -1,11 +1,14 @@
 package model;
 
 import engine.BankEngine;
+import util.InputUtil;
+
+import java.util.Scanner;
 
 public class Banco {
     private static final Conta[] CONTAS = new Conta[100];
     private static int POSICAO = 0;
-
+    private static BankEngine bankEngine;
 
     public Banco() {
 
@@ -16,7 +19,6 @@ public class Banco {
     }
 
     public void loginRequest(String usuario, String senha) {
-        BankEngine bankEngine = new BankEngine();
         usuario = usuario.substring(0, 1).toUpperCase() + usuario.substring(1).toLowerCase();
 
         for (Conta value : Banco.CONTAS) {
@@ -38,6 +40,24 @@ public class Banco {
         }
     }
 
+    public static void validyLogin(Conta conta, ContaCorrente contaCorrente){
+        Scanner sc = new Scanner(System.in);
+        String senha = sc.nextLine();
+
+        if(senha.equals(conta.getSenha())){
+            System.out.println(conta);
+        }else{
+            System.out.println("Algo deu errado deseja tentar novamente?");
+            byte option = InputUtil.readByte();
+            switch (option){
+                case 1:
+                    validyLogin(conta,contaCorrente);
+                    break;
+                case 2:
+                    bankEngine.menuBanco(conta,contaCorrente);
+            }
+        }
+    }
 
     public static void setContas(Conta conta) {
         Banco.CONTAS[POSICAO] = conta;

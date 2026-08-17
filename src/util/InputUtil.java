@@ -22,6 +22,10 @@ public class InputUtil {
         return sc.nextByte();
     }
 
+    public static int readInt(){
+        return sc.nextInt();
+    }
+
     public static double readValorSaque(String mensagem) {
         System.out.print(mensagem);
         return sc.nextDouble();
@@ -38,9 +42,9 @@ public class InputUtil {
 
         switch (value) {
             case 1:
-                return AccountType.LEGAl_PERSON;
-            case 2:
                 return AccountType.INDIVIDUAL_ACCOUNT;
+            case 2:
+                return AccountType.LEGAl_PERSON;
             default:
                 readTypeAccount("Opção invalida tente novamente\n" +
                         "1:pessoa física\n" +

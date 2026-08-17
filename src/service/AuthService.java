@@ -8,6 +8,7 @@ import model.ContaCorrente;
 import util.InputUtil;
 
 public class AuthService {
+    private static Banco banco;
 
     public static void criarConta() {
         BankEngine engine = new BankEngine();
@@ -25,8 +26,7 @@ public class AuthService {
         engine.menuBanco(conta, contaCorrente);
     }
 
-    public static void Entrar() {
-        Banco banco = new Banco();
+    public static void entrar() {
         String usuario = InputUtil.readNome("Usuario:");
         String senha = InputUtil.readSenha("Senha:");
         banco.loginRequest(usuario, senha);

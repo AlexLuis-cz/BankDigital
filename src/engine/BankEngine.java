@@ -1,5 +1,6 @@
 package engine;
 
+import model.Banco;
 import model.Conta;
 import model.ContaCorrente;
 import service.AuthService;
@@ -21,7 +22,7 @@ public class BankEngine {
         byte esc = InputUtil.readByte();
         switch (esc) {
             case 1:
-                AuthService.Entrar();
+                AuthService.entrar();
                 break;
             case 2:
                 AuthService.criarConta();
@@ -36,7 +37,7 @@ public class BankEngine {
         System.out.print("""
                 -------    
                 1:Depositar | 4:Saldo
-                2:Sacar     | 5:Saldo cheque
+                2:Sacar     | 5:Dados do usuario
                 3:Extrato   | 6:logout
                 -------\n""");
 
@@ -59,12 +60,12 @@ public class BankEngine {
                 break;
             case 4:
                 //Saldo
-                System.out.println(conta);
+                System.out.println(conta.getSaldo());
                 menuBanco(conta, contaCorrente);
                 break;
             case 5:
-                //Saldo em cheque
-                System.out.println("Saldo de cheque:" + contaCorrente.getCheque());
+                //Dados do usuario
+                Banco.validyLogin(conta,contaCorrente);
                 menuBanco(conta, contaCorrente);
                 break;
             case 6:

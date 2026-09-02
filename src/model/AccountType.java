@@ -1,23 +1,23 @@
 package model;
 
 public enum AccountType {
-    INDIVIDUAL_ACCOUNT("Pessoa fisica",1),
-    LEGAl_PERSON("Pessoa juridica",2);
+    INDIVIDUAL_ACCOUNT("Pessoa fisica", 1),
+    LEGAl_PERSON("Pessoa juridica", 2);
 
     private final int typeNumber;
-    private final String tipoDaConta;
+    private final String typeAccount;
 
 
-    AccountType(String tipoDaConta,int typeNumber) {
+    AccountType(String typeAccount, int typeNumber) {
         this.typeNumber = typeNumber;
-        this.tipoDaConta = tipoDaConta;
+        this.typeAccount = typeAccount;
     }
 
     public int getTypeNumber() {
         return typeNumber;
     }
 
-    public String getTipoDaConta(){
-        return this.tipoDaConta;
+    public String getTipoDaConta() {
+        return this.typeAccount;
     }
 }

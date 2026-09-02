@@ -6,26 +6,29 @@ import model.ContaCorrente;
 import service.AuthService;
 import service.DepositService;
 import service.SaqueService;
+import service.TransactionService;
 import util.InputUtil;
 
 public class BankEngine {
-    SaqueService saqueService = new SaqueService();
-    DepositService depositService = new DepositService();
+    private final SaqueService SAQUE_SERVICE = new SaqueService();
+    private final DepositService DEPOSIT_SERVICE = new DepositService();
+    private final AuthService AUTH_SERVICE = new AuthService();
+    private final TransactionService transactionService = new TransactionService();
 
-    public static void menu() {
+    public void menu() {
         System.out.print("""
                 --------
-                1:Entrar
-                2:Criar
+                1:login
+                2:create Account
                 --------
                 """);
         byte esc = InputUtil.readByte();
         switch (esc) {
             case 1:
-                AuthService.entrar();
+                AUTH_SERVICE.loginRequest();
                 break;
             case 2:
-                AuthService.criarConta();
+                AUTH_SERVICE.criarConta();
                 break;
             default:
                 menu();
@@ -33,45 +36,56 @@ public class BankEngine {
         }
     }
 
-    public void menuBanco(Conta conta, ContaCorrente contaCorrente) {
+    public void menuBank(Conta conta, ContaCorrente contaCorrente) {
+        Banco banco = new Banco();
         System.out.print("""
                 -------    
                 1:Depositar | 4:Saldo
-                2:Sacar     | 5:Dados do usuario
-                3:Extrato   | 6:logout
+                2:Sacar     | 5:Transferencia
+                3:Extrato   | 6:Chaves
+                            | 7:logout
                 -------\n""");
-
-
         byte menu = InputUtil.readByte();
 
         switch (menu) {
             case 1:
                 //Deposito
-                depositService.Depositar(conta, contaCorrente);
+                DEPOSIT_SERVICE.Depositar(conta, contaCorrente);
                 break;
             case 2:
                 //Saque
-                saqueService.saque(conta, contaCorrente);
+                SAQUE_SERVICE.saque(conta, contaCorrente);
                 break;
             case 3:
                 //Extrato
                 conta.getExtrato();
-                menuBanco(conta, contaCorrente);
+                menuBank(conta, contaCorrente);
                 break;
             case 4:
                 //Saldo
                 System.out.println(conta.getSaldo());
-                menuBanco(conta, contaCorrente);
+                menuBank(conta, contaCorrente);
                 break;
             case 5:
-                //Dados do usuario
-                Banco.validyLogin(conta,contaCorrente);
-                menuBanco(conta, contaCorrente);
+                //Transferencia
+
                 break;
             case 6:
+                if(conta.getChaveTransacao() == null){
+                    System.out.println("Sem Chaves cadastradas.");
+                    transactionService.creatKey(conta,contaCorrente);
+                }else{
+                    System.out.println("Chave de transação cadastrada:"+conta.getChaveTransacao());
+                    menuBank(conta,contaCorrente);
+                }
+                break;
+            case 7:
                 //logout
                 menu();
                 break;
+            default:
+                System.out.println("invalid option");
+                menuBank(conta, contaCorrente);
         }
     }
 }

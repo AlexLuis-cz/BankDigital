@@ -14,6 +14,6 @@ public class DepositService {
         conta.setDeposito(deposito);
         conta.setExtrato(deposito);
 
-        bankEngine.menuBanco(conta, contaCorrente);
+        bankEngine.menuBank(conta, contaCorrente);
     }
 }

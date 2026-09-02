@@ -13,14 +13,14 @@ public class SaqueService {
         if (valor > conta.getSaldo()) {//Validation to check if the check or withdrawal has funds.
             if (valor > contaCorrente.getCheque()) {
                 System.out.println("Não sera possivel fazer o saque");
-                bankEngine.menuBanco(conta, contaCorrente);
+                bankEngine.menuBank(conta, contaCorrente);
             } else {
                 contaCorrente.setCheque(contaCorrente.getCheque() - valor);
                 System.out.println("Saque De cheque Concluido!!");
                 System.out.printf("Saque feito por:%s\n", conta.getNome());
                 System.out.printf("Valor retirado:%.2f", valor);
                 System.out.printf("\nSaldo Cheque Restante:%.2f\n", contaCorrente.getCheque());
-                bankEngine.menuBanco(conta, contaCorrente);
+                bankEngine.menuBank(conta, contaCorrente);
             }
         } else {
             conta.setSaldo(conta.getSaldo() - valor);
@@ -28,7 +28,7 @@ public class SaqueService {
             System.out.printf("Saque feito por:%s\n", conta.getNome());
             System.out.printf("Valor retirado:%.2f", valor);
             System.out.printf("\nSaldo Restante:%.2f\n", conta.getSaldo());
-            bankEngine.menuBanco(conta, contaCorrente);
+            bankEngine.menuBank(conta, contaCorrente);
         }
     }
 }

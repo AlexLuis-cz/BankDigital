@@ -1,22 +1,24 @@
 package model;
 
 public class Conta {
+    protected String email;
     protected String nome;
     protected String senha;
     protected double saldo;
+    protected String chaveTransacao;
     protected AccountType accountType;
     protected double[] extrato = new double[100];
 
     private byte prox = 0;
 
     public Conta(String nome, String senha, AccountType accountType) {
-        this.nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
+        this.nome = nome;
         this.senha = senha;
         this.accountType = accountType;
     }
 
-    public Conta(String nome, String senha) {
-        this.nome = nome.substring(0, 1).toUpperCase() + nome.substring(1).toLowerCase();
+    public Conta(String email, String senha) {
+        this.email = email;
         this.senha = senha;
     }
 
@@ -29,6 +31,14 @@ public class Conta {
         this.senha = senha;
     }
 
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setChaveTransacao(String chaveTransacao){
+        this.chaveTransacao = chaveTransacao;
+    }
+
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
@@ -39,6 +49,9 @@ public class Conta {
     }
 
     //gets
+    public String getEmail(){
+        return this.email;
+    }
 
     public double getSaldo() {
         return this.saldo;
@@ -46,6 +59,10 @@ public class Conta {
 
     public String getSenha() {
         return this.senha;
+    }
+
+    public String getChaveTransacao(){
+        return chaveTransacao;
     }
 
 
@@ -74,9 +91,8 @@ public class Conta {
     @Override
     public String toString() {
         return "Dados\n" +
-                "nome:" + nome + '\n' +
-                "senha:" + senha + '\n' +
-                "accountType:" + accountType.getTipoDaConta() + "\n"
+                "email:" + this.email + '\n' +
+                "senha:" + this.senha + '\n'
                 ;
     }
 }

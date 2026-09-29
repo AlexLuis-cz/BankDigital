@@ -5,8 +5,9 @@ import model.Conta;
 import model.ContaCorrente;
 import util.InputUtil;
 
-public class SaqueService {
-    public void saque(Conta conta, ContaCorrente contaCorrente) {
+public class SaqueService implements Payments {
+    @Override
+    public void lootMoney(Conta conta, ContaCorrente contaCorrente) {
         BankEngine bankEngine = new BankEngine();
         double valor = InputUtil.readValorSaque("Valor que deseja sacar:");
 

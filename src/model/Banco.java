@@ -18,7 +18,7 @@ public class Banco {
         return CONTAS;
     }
 
-    public void validyLogin(Conta conta, ContaCorrente contaCorrente) {
+    public static void validyLogin(Conta conta) {
         Scanner sc = new Scanner(System.in);
         String senha = sc.nextLine();
 
@@ -29,10 +29,10 @@ public class Banco {
             byte option = InputUtil.readByte();
             switch (option) {
                 case 1:
-                    validyLogin(conta, contaCorrente);
+                    validyLogin(conta);
                     break;
                 case 2:
-                    bankEngine.menuBank(conta, contaCorrente);
+                    bankEngine.menuBank(conta);
             }
         }
     }

@@ -6,7 +6,7 @@ import model.ContaCorrente;
 import util.InputUtil;
 
 public class DepositService {
-    public void Depositar(Conta conta, ContaCorrente contaCorrente) {
+    public void Depositar(Conta conta) {
         BankEngine bankEngine = new BankEngine();
 
         double deposito = InputUtil.readValorDeposito("Valor de Deposito:");
@@ -14,6 +14,6 @@ public class DepositService {
         conta.setDeposito(deposito);
         conta.setExtrato(deposito);
 
-        bankEngine.menuBank(conta, contaCorrente);
+        bankEngine.menuBank(conta);
     }
 }

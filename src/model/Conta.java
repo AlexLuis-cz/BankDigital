@@ -11,10 +11,10 @@ public class Conta {
 
     private byte prox = 0;
 
-    public Conta(String nome, String senha, AccountType accountType) {
+    public Conta(String nome, String email, String senha) {
         this.nome = nome;
+        this.email = email;
         this.senha = senha;
-        this.accountType = accountType;
     }
 
     public Conta(String email, String senha) {

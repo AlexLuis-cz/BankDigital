@@ -12,15 +12,15 @@ public class AuthService {
 
     public void criarConta() {
         BankEngine engine = new BankEngine();
+        String nome = InputUtil.readNome("Nome:");
         String email = InputUtil.readNome("Email:");
         String senha = InputUtil.readSenha("Senha:");
 
 
-        Conta conta = new Conta(email, senha);
-        ContaCorrente contaCorrente = new ContaCorrente(conta);
+        Conta conta = new Conta(nome,email, senha);
 
         Banco.setContas(conta);
-        engine.menuBank(conta, contaCorrente);
+        engine.menuBank(conta);
     }
 
     public void loginRequest() {
@@ -36,8 +36,7 @@ public class AuthService {
             assert value != null;
             if (email.equals(value.getEmail()) && senha.equals(value.getSenha())) {
                 System.out.println("login feito com sucesso");
-                ContaCorrente contaCorrente = new ContaCorrente(value);
-                bankEngine.menuBank(value, contaCorrente);
+                bankEngine.menuBank(value);
                 break;
             }
         }

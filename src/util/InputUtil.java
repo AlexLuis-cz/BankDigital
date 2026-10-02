@@ -9,7 +9,6 @@ public class InputUtil {
 
     public static String readNome(String mensagem) {
         System.out.print(mensagem);
-        sc.nextLine();
         return sc.nextLine();
     }
 
@@ -22,8 +21,8 @@ public class InputUtil {
         return sc.nextByte();
     }
 
-    public static int readInt(){
-        return sc.nextInt();
+    public static String breakLine(){
+        return sc.nextLine();
     }
 
     public static double readValorSaque(String mensagem) {

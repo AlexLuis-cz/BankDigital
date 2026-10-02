@@ -13,7 +13,7 @@ public class BankEngine {
     private final SaqueService SAQUE_SERVICE = new SaqueService();
     private final DepositService DEPOSIT_SERVICE = new DepositService();
     private final AuthService AUTH_SERVICE = new AuthService();
-    private final TransactionService transactionService = new TransactionService();
+    private final TransactionService TRANSACTION_SERVICE = new TransactionService();
 
     public void menu() {
         System.out.print("""
@@ -23,6 +23,8 @@ public class BankEngine {
                 --------
                 """);
         byte esc = InputUtil.readByte();
+        InputUtil.breakLine();
+
         switch (esc) {
             case 1:
                 AUTH_SERVICE.loginRequest();
@@ -36,7 +38,7 @@ public class BankEngine {
         }
     }
 
-    public void menuBank(Conta conta, ContaCorrente contaCorrente) {
+    public void menuBank(Conta conta) {
         Banco banco = new Banco();
         System.out.print("""
                 -------    
@@ -50,21 +52,21 @@ public class BankEngine {
         switch (menu) {
             case 1:
                 //Deposito
-                DEPOSIT_SERVICE.Depositar(conta, contaCorrente);
+                DEPOSIT_SERVICE.Depositar(conta);
                 break;
             case 2:
                 //Saque
-                SAQUE_SERVICE.lootMoney(conta, contaCorrente);
+                SAQUE_SERVICE.lootMoney(conta);
                 break;
             case 3:
                 //Extrato
                 conta.getExtrato();
-                menuBank(conta, contaCorrente);
+                menuBank(conta);
                 break;
             case 4:
                 //Saldo
                 System.out.println(conta.getSaldo());
-                menuBank(conta, contaCorrente);
+                menuBank(conta);
                 break;
             case 5:
                 //Transferencia
@@ -73,10 +75,10 @@ public class BankEngine {
             case 6:
                 if(conta.getChaveTransacao() == null){
                     System.out.println("Sem Chaves cadastradas.");
-                    transactionService.creatKey(conta,contaCorrente);
+                    TRANSACTION_SERVICE.creatKey(conta);
                 }else{
                     System.out.println("Chave de transação cadastrada:"+conta.getChaveTransacao());
-                    menuBank(conta,contaCorrente);
+                    menuBank(conta);
                 }
                 break;
             case 7:
@@ -85,7 +87,7 @@ public class BankEngine {
                 break;
             default:
                 System.out.println("invalid option");
-                menuBank(conta, contaCorrente);
+                menuBank(conta);
         }
     }
 }

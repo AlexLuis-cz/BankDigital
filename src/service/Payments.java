@@ -8,7 +8,7 @@ public interface Payments {
 
     }
 
-    default void lootMoney(Conta conta){
+    default void lootMoney(Conta conta, ContaCorrente contaCorrente){
 
     }
 }

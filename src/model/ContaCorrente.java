@@ -1,9 +1,9 @@
 package model;
 
-public class ContaCorrente extends Conta {
+public class ContaCorrente extends Conta{
     private double cheque;
 
-    public ContaCorrente(Conta conta) {
+    public ContaCorrente() {
         super();
     }
 

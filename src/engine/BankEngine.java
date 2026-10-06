@@ -1,6 +1,5 @@
 package engine;
 
-import model.Banco;
 import model.Conta;
 import model.ContaCorrente;
 import service.AuthService;
@@ -39,7 +38,6 @@ public class BankEngine {
     }
 
     public void menuBank(Conta conta) {
-        Banco banco = new Banco();
         System.out.print("""
                 -------    
                 1:Depositar | 4:Saldo
@@ -56,7 +54,8 @@ public class BankEngine {
                 break;
             case 2:
                 //Saque
-                SAQUE_SERVICE.lootMoney(conta);
+                ContaCorrente contaCorrente = conta.getContaCorrente();
+                SAQUE_SERVICE.lootMoney(conta,contaCorrente);
                 break;
             case 3:
                 //Extrato
@@ -70,7 +69,9 @@ public class BankEngine {
                 break;
             case 5:
                 //Transferencia
-
+                TRANSACTION_SERVICE.transfer(conta);
+                InputUtil.breakLine();
+                menuBank(conta);
                 break;
             case 6:
                 if(conta.getChaveTransacao() == null){

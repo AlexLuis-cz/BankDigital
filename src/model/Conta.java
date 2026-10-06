@@ -8,7 +8,7 @@ public class Conta {
     protected String chaveTransacao;
     protected AccountType accountType;
     protected double[] extrato = new double[100];
-
+    private ContaCorrente contaCorrente;
     private byte prox = 0;
 
     public Conta(String nome, String email, String senha) {
@@ -48,6 +48,14 @@ public class Conta {
         this.saldo += saldo;
     }
 
+    public void setContaCorrente(ContaCorrente contaCorrente){
+        this.contaCorrente = contaCorrente;
+    }
+
+    public void setChequeContaCorrente(double cheque){
+        contaCorrente.setCheque(cheque);
+    }
+
     //gets
     public String getEmail(){
         return this.email;
@@ -65,11 +73,17 @@ public class Conta {
         return chaveTransacao;
     }
 
+    public double getChequeContaCorrente(){
+        return contaCorrente.getCheque();
+    }
 
     public String getNome() {
         return this.nome;
     }
 
+    public ContaCorrente getContaCorrente(){
+        return this.contaCorrente;
+    }
     //Extrato
     public void setExtrato(double valor) {
         if (prox <= extrato.length) {

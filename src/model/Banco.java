@@ -14,7 +14,7 @@ public class Banco {
 
     }
 
-    public Conta[] getContas() {
+    public static Conta[] getContas() {
         return CONTAS;
     }
 

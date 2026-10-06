@@ -18,6 +18,8 @@ public class AuthService {
 
 
         Conta conta = new Conta(nome,email, senha);
+        ContaCorrente contaCorrente = new ContaCorrente();
+        conta.setContaCorrente(contaCorrente);
 
         Banco.setContas(conta);
         engine.menuBank(conta);

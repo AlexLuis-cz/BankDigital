@@ -54,8 +54,7 @@ public class BankEngine {
                 break;
             case 2:
                 //Saque
-                ContaCorrente contaCorrente = conta.getContaCorrente();
-                SAQUE_SERVICE.lootMoney(conta,contaCorrente);
+                SAQUE_SERVICE.lootMoney(conta);
                 break;
             case 3:
                 //Extrato
@@ -70,7 +69,6 @@ public class BankEngine {
             case 5:
                 //Transferencia
                 TRANSACTION_SERVICE.transfer(conta);
-                InputUtil.breakLine();
                 menuBank(conta);
                 break;
             case 6:

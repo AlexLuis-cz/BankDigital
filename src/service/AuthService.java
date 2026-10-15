@@ -7,8 +7,7 @@ import model.ContaCorrente;
 import util.InputUtil;
 
 public class AuthService {
-    private final Banco banco = new Banco();
-    private static BankEngine bankEngine = new BankEngine();
+    private final static BankEngine BANK_ENGINE = new BankEngine();
 
     public void criarConta() {
         BankEngine engine = new BankEngine();
@@ -17,8 +16,8 @@ public class AuthService {
         String senha = InputUtil.readSenha("Senha:");
 
 
-        Conta conta = new Conta(nome,email, senha);
-        ContaCorrente contaCorrente = new ContaCorrente();
+        Conta conta = new Conta(nome, email, senha);
+        ContaCorrente contaCorrente = new ContaCorrente(conta);
         conta.setContaCorrente(contaCorrente);
 
         Banco.setContas(conta);
@@ -29,16 +28,16 @@ public class AuthService {
         String email = InputUtil.readNome("Email:");
         String senha = InputUtil.readSenha("Senha:");
 
-        for (Conta value : banco.getContas()) {
+        for (Conta value : Banco.getContas()) {
             if (value == null) {
                 System.out.println("Usuario ou senha incorretos");
-                loginRequest();
+                BANK_ENGINE.menu();
             }
 
             assert value != null;
             if (email.equals(value.getEmail()) && senha.equals(value.getSenha())) {
                 System.out.println("login feito com sucesso");
-                bankEngine.menuBank(value);
+                BANK_ENGINE.menuBank(value);
                 break;
             }
         }

@@ -4,8 +4,7 @@ public class ContaCorrente extends Conta {
     private double cheque;
 
     public ContaCorrente(Conta conta) {
-        super(conta.nome, conta.email, conta.senha);
-        this.saldo = conta.getSaldo();
+        super(conta);
     }
 
     //depositos

@@ -6,7 +6,7 @@ import util.InputUtil;
 import java.util.Scanner;
 
 public class Banco {
-    private static final Conta[] CONTAS = new Conta[100];
+    private final Conta[] CONTAS = new Conta[100];
     private static int POSICAO = 0;
     private static final BankEngine bankEngine = new BankEngine();
 
@@ -14,7 +14,7 @@ public class Banco {
 
     }
 
-    public static Conta[] getContas() {
+    public Conta[] getContas() {
         return CONTAS;
     }
 
@@ -37,8 +37,8 @@ public class Banco {
         }
     }
 
-    public static void setContas(Conta conta) {
-        Banco.CONTAS[POSICAO] = conta;
+    public void setContas(Conta conta) {
+        CONTAS[POSICAO] = conta;
         POSICAO++;
     }
 }

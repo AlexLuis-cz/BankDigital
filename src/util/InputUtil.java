@@ -21,7 +21,7 @@ public class InputUtil {
         return sc.nextByte();
     }
 
-    public static String breakLine(){
+    public static String breakLine() {
         return sc.nextLine();
     }
 
@@ -51,5 +51,24 @@ public class InputUtil {
                 break;
         }
         return null;
+    }
+
+    public static void printMenuBank() {
+        System.out.print("""
+                -------    
+                1:Depositar | 4:Saldo
+                2:Sacar     | 5:Transferencia
+                3:Extrato   | 6:Chaves
+                            | 7:logout
+                -------\n""");
+    }
+
+    public static void printMenuAccount() {
+        System.out.print("""
+                --------
+                1:login
+                2:create Account
+                --------
+                """);
     }
 }

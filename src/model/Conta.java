@@ -6,8 +6,8 @@ public class Conta {
     protected String senha;
     protected double saldo;
     protected String chaveTransacao;
-    private AccountType accountType;
-    private double[] extrato = new double[100];
+    protected AccountType accountType;
+    protected double[] extrato = new double[100];
     private ContaCorrente contaCorrente;
     private byte prox = 0;
 
@@ -20,6 +20,18 @@ public class Conta {
     public Conta(String email, String senha) {
         this.email = email;
         this.senha = senha;
+    }
+
+    public Conta(Conta copia) {
+        this.email = copia.email;
+        this.nome = copia.nome;
+        this.senha = copia.senha;
+        this.saldo = copia.saldo;
+        this.chaveTransacao = copia.chaveTransacao;
+        this.accountType = copia.accountType;
+        this.extrato = copia.extrato;
+        this.contaCorrente = copia.contaCorrente;
+        this.prox = copia.prox;
     }
 
     public Conta() {

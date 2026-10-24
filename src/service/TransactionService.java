@@ -3,16 +3,18 @@ package service;
 import engine.BankEngine;
 import model.Banco;
 import model.Conta;
-import model.ContaCorrente;
 import util.InputUtil;
 
 public class TransactionService implements Payments {
     private final static BankEngine bankEngine = new BankEngine();
+    private final static Banco BANCO = new Banco();
 
     public void creatKey(Conta conta) {
         InputUtil.breakLine();
+
         String newKey = InputUtil.readNome("Nova chave de transação:");
         conta.setChaveTransacao(newKey);
+
         final BankEngine bankEngine = new BankEngine();
         bankEngine.menuBank(conta);
     }
@@ -22,7 +24,7 @@ public class TransactionService implements Payments {
         InputUtil.breakLine();
         String chaveDestinatario = InputUtil.readNome("Digite a chave pix:");
 
-        for (Conta destinatario : Banco.getContas()) {
+        for (Conta destinatario : BANCO.getContas()) {
             if (destinatario == null) return;
 
             if (chaveDestinatario.equals(destinatario.getChaveTransacao())) {

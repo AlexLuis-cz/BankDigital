@@ -2,7 +2,6 @@ package service;
 
 import engine.BankEngine;
 import model.Conta;
-import model.ContaCorrente;
 import util.InputUtil;
 
 public class DepositService {

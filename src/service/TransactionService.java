@@ -28,7 +28,14 @@ public class TransactionService implements Payments {
             if (destinatario == null) return;
 
             if (chaveDestinatario.equals(destinatario.getChaveTransacao())) {
-                double valor = InputUtil.readValorSaque("valor transferencia:");
+                double valor = InputUtil.readValorTransfer("valor transferencia:");
+
+                //caso o valor digitado seja negativo ou 0
+                if (valor <= 0) {
+                    System.out.println("Valor invalido");
+                    transfer(conta);
+                }
+
                 if (conta.getSaldo() >= valor || conta.getChequeContaCorrente() >= valor) {
                     conta.setSaldo(conta.getSaldo() - valor);
                     destinatario.setSaldo(destinatario.getSaldo() + valor);

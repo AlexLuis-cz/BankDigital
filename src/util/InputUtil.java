@@ -2,6 +2,7 @@ package util;
 
 import model.AccountType;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputUtil {
@@ -18,7 +19,11 @@ public class InputUtil {
     }
 
     public static byte readByte() {
-        return sc.nextByte();
+        try {
+            return sc.nextByte();
+        } catch (InputMismatchException e) {
+            return 0;
+        }
     }
 
     public static String breakLine() {
@@ -26,6 +31,11 @@ public class InputUtil {
     }
 
     public static double readValorSaque(String mensagem) {
+        System.out.print(mensagem);
+        return sc.nextDouble();
+    }
+
+    public static double readValorTransfer(String mensagem) {
         System.out.print(mensagem);
         return sc.nextDouble();
     }

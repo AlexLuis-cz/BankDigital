@@ -7,7 +7,7 @@ import model.ContaCorrente;
 import util.InputUtil;
 
 public class AuthService {
-    private final static BankEngine BANK_ENGINE = new BankEngine();
+    private static final BankEngine BANK_ENGINE = new BankEngine();
     private static final Banco BANCO = new Banco();
 
     public void criarConta() {
@@ -42,5 +42,9 @@ public class AuthService {
                 break;
             }
         }
+    }
+
+    public static Banco getBANCO() {
+        return BANCO;
     }
 }

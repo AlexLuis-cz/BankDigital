@@ -7,7 +7,6 @@ import util.InputUtil;
 
 public class TransactionService implements Payments {
     private final static BankEngine bankEngine = new BankEngine();
-    private final static Banco BANCO = new Banco();
 
     public void creatKey(Conta conta) {
         InputUtil.breakLine();
@@ -15,17 +14,17 @@ public class TransactionService implements Payments {
         String newKey = InputUtil.readNome("Nova chave de transação:");
         conta.setChaveTransacao(newKey);
 
-        final BankEngine bankEngine = new BankEngine();
         bankEngine.menuBank(conta);
     }
 
     @Override
     public void transfer(Conta conta) {
+        Banco BANCO = AuthService.getBANCO();
+
         InputUtil.breakLine();
         String chaveDestinatario = InputUtil.readNome("Digite a chave pix:");
 
         for (Conta destinatario : BANCO.getContas()) {
-            if (destinatario == null) return;
 
             if (chaveDestinatario.equals(destinatario.getChaveTransacao())) {
                 double valor = InputUtil.readValorTransfer("valor transferencia:");

@@ -25,6 +25,7 @@ public class TransactionService implements Payments {
         String chaveDestinatario = InputUtil.readNome("Digite a chave pix:");
 
         for (Conta destinatario : BANCO.getContas()) {
+            if(destinatario == null)return;
 
             if (chaveDestinatario.equals(destinatario.getChaveTransacao())) {
                 double valor = InputUtil.readValorTransfer("valor transferencia:");

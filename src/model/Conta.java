@@ -9,7 +9,7 @@ public class Conta {
     protected AccountType accountType;
     protected double[] extrato = new double[100];
     private ContaCorrente contaCorrente;
-    private static byte prox = 0;
+    private byte prox = 0;
 
     public Conta(String nome, String email, String senha) {
         this.nome = nome;

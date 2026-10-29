@@ -40,7 +40,7 @@ public class BankEngine {
             switch (menu) {
                 case 1:
                     //Deposito
-                    DEPOSIT_SERVICE.Depositar(conta);
+                    DEPOSIT_SERVICE.depositar(conta);
                     break;
                 case 2:
                     //Saque

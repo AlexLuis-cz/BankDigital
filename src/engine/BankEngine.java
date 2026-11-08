@@ -79,6 +79,6 @@ public class BankEngine {
                     InputUtil.breakLine();
                     break;
             }
-        }while (true);
+        } while (true);
     }
 }

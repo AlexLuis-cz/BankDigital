@@ -67,13 +67,13 @@ public class InputUtil {
 
     public static void printMenuBank() {
         System.out.print("""
-                -------   \s
-                0:Sair      | 4:Saldo
-                1:Depositar | 5:Transferencia
-                2:Sacar     | 6:Chaves
-                3:Extrato   | 7:logout
-                -------
-               \s""");
+                 -------   \s
+                 0:Sair      | 4:Saldo
+                 1:Depositar | 5:Transferencia
+                 2:Sacar     | 6:Chaves
+                 3:Extrato   | 7:logout
+                 -------
+                \s""");
     }
 
     public static void printMenuAccount() {

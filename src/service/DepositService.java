@@ -8,7 +8,7 @@ public class DepositService {
 
         double deposito = InputUtil.readValorDeposito("Valor de Deposito:");
 
-        if(deposito <= 0){
+        if (deposito <= 0) {
             System.out.println("Valor de deposito invalido");
             depositar(conta);
         }

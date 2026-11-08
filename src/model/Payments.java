@@ -1,6 +1,4 @@
-package service;
-
-import model.Conta;
+package model;
 
 public interface Payments {
     default void transfer(Conta conta) {

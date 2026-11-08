@@ -33,11 +33,15 @@ public class BankEngine {
     }
 
     public void menuBank(Conta conta) {
-        while (true) {
+        byte menuOpt;
+        do {
             InputUtil.printMenuBank();
-            byte menuOpt = InputUtil.readByte();
+            menuOpt = InputUtil.readByte();
 
             switch (menuOpt) {
+                case 0:
+                    System.exit(0);
+                    break;
                 case 1:
                     //Deposito
                     DEPOSIT_SERVICE.depositar(conta);
@@ -75,6 +79,6 @@ public class BankEngine {
                     InputUtil.breakLine();
                     break;
             }
-        }
+        }while (true);
     }
 }

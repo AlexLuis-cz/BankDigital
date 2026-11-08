@@ -3,19 +3,19 @@ package model;
 import engine.BankEngine;
 import util.InputUtil;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Banco {
-    private final Conta[] CONTAS = new Conta[100];
-    private static int POSICAO = 0;
+    private final ArrayList<Conta> contas = new ArrayList<Conta>();
     private static final BankEngine bankEngine = new BankEngine();
 
     public Banco() {
 
     }
 
-    public Conta[] getContas() {
-        return CONTAS;
+    public ArrayList<Conta> getContas() {
+        return contas;
     }
 
     public static void validyLogin(Conta conta) {
@@ -38,7 +38,6 @@ public class Banco {
     }
 
     public void setContas(Conta conta) {
-        CONTAS[POSICAO] = conta;
-        POSICAO++;
+        contas.add(conta);
     }
 }

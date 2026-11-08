@@ -55,9 +55,11 @@ public class InputUtil {
             case 2:
                 return AccountType.LEGAl_PERSON;
             default:
-                readTypeAccount("Opção invalida tente novamente\n" +
-                        "1:pessoa física\n" +
-                        "2:pessoa jurídica\n");
+                readTypeAccount("""
+                        Opção invalida tente novamente
+                        1:pessoa física
+                        2:pessoa jurídica
+                        """);
                 break;
         }
         return null;
@@ -65,12 +67,13 @@ public class InputUtil {
 
     public static void printMenuBank() {
         System.out.print("""
-                -------    
-                1:Depositar | 4:Saldo
-                2:Sacar     | 5:Transferencia
-                3:Extrato   | 6:Chaves
-                            | 7:logout
-                -------\n""");
+                -------   \s
+                0:Sair      | 4:Saldo
+                1:Depositar | 5:Transferencia
+                2:Sacar     | 6:Chaves
+                3:Extrato   | 7:logout
+                -------
+               \s""");
     }
 
     public static void printMenuAccount() {

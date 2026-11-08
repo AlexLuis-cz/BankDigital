@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Conta {
     protected String email;
     protected String nome;
@@ -7,9 +9,8 @@ public class Conta {
     protected double saldo;
     protected String chaveTransacao;
     protected AccountType accountType;
-    protected double[] extrato = new double[100];
+    protected ArrayList<Double> extrato = new ArrayList<Double>();
     private ContaCorrente contaCorrente;
-    private byte prox = 0;
 
     public Conta(String nome, String email, String senha) {
         this.nome = nome;
@@ -31,7 +32,6 @@ public class Conta {
         this.accountType = copia.accountType;
         this.extrato = copia.extrato;
         this.contaCorrente = copia.contaCorrente;
-        this.prox = copia.prox;
     }
 
     public Conta() {
@@ -99,18 +99,12 @@ public class Conta {
 
     //Extrato
     public void setExtrato(double valor) {
-        if (prox <= extrato.length) {
-            extrato[prox] = valor;
-            prox++;
-        }
+        extrato.add(valor);
     }
 
     public void getExtrato() {
-        for (int i = 0; i < prox; i++) {
-            System.out.println("Valores depositados:" + extrato[i]);
-        }
-        if (prox == 100) {
-            prox = 0;
+        for (Double values : extrato) {
+            System.out.println("Valores depositados:" + values);
         }
     }
 

@@ -30,7 +30,7 @@ public class AuthService {
         String senha = InputUtil.readSenha("Senha:");
 
         for (Conta value : BANCO.getContas()) {
-            if (value == null) {
+            if (BANCO.getContas().isEmpty()) {
                 System.out.println("Usuario ou senha incorretos");
                 BANK_ENGINE.menu();
             }

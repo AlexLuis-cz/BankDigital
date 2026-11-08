@@ -3,6 +3,7 @@ package service;
 import engine.BankEngine;
 import model.Banco;
 import model.Conta;
+import model.Payments;
 import util.InputUtil;
 
 public class TransactionService implements Payments {
@@ -25,7 +26,7 @@ public class TransactionService implements Payments {
         String chaveDestinatario = InputUtil.readNome("Digite a chave pix:");
 
         for (Conta destinatario : BANCO.getContas()) {
-            if(destinatario == null)return;
+            if(BANCO.getContas().isEmpty())return;
 
             if (chaveDestinatario.equals(destinatario.getChaveTransacao())) {
                 double valor = InputUtil.readValorTransfer("valor transferencia:");

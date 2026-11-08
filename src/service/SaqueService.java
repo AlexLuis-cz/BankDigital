@@ -1,7 +1,7 @@
 package service;
 
-import engine.BankEngine;
 import model.Conta;
+import model.Payments;
 import util.InputUtil;
 
 public class SaqueService implements Payments {
